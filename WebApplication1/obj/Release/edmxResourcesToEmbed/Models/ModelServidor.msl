@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TireappssModel1StoreContainer" CdmEntityContainer="TireappssEntitiesServidor">
+    <EntitySetMapping Name="Camion">
+      <EntityTypeMapping TypeName="TireappssModel1.Camion">
+        <MappingFragment StoreEntitySet="Camion">
+          <ScalarProperty Name="camion_ID" ColumnName="camion_ID" />
+          <ScalarProperty Name="empresa_id" ColumnName="empresa_id" />
+          <ScalarProperty Name="placa" ColumnName="placa" />
+          <ScalarProperty Name="tag" ColumnName="tag" />
+          <ScalarProperty Name="modelo" ColumnName="modelo" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="ejes" ColumnName="ejes" />
+          <ScalarProperty Name="num_llantas" ColumnName="num_llantas" />
+          <ScalarProperty Name="carga_util" ColumnName="carga_util" />
+          <ScalarProperty Name="carga_neta" ColumnName="carga_neta" />
+          <ScalarProperty Name="Kilometraje" ColumnName="Kilometraje" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="usureg" ColumnName="usureg" />
+          <ScalarProperty Name="fecreg" ColumnName="fecreg" />
+          <ScalarProperty Name="usumod" ColumnName="usumod" />
+          <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Camion_neumaticos">
+      <EntityTypeMapping TypeName="TireappssModel1.Camion_neumaticos">
+        <MappingFragment StoreEntitySet="Camion_neumaticos">
+          <ScalarProperty Name="camion_neum_ID" ColumnName="camion_neum_ID" />
+          <ScalarProperty Name="camion_id" ColumnName="camion_id" />
+          <ScalarProperty Name="neumatico_id" ColumnName="neumatico_id" />
+          <ScalarProperty Name="Kilometraje_act" ColumnName="Kilometraje_act" />
+          <ScalarProperty Name="posicion" ColumnName="posicion" />
+          <ScalarProperty Name="estadouso" ColumnName="estadouso" />
+          <ScalarProperty Name="usureg" ColumnName="usureg" />
+          <ScalarProperty Name="fecreg" ColumnName="fecreg" />
+          <ScalarProperty Name="usumod" ColumnName="usumod" />
+          <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departamento">
+      <EntityTypeMapping TypeName="TireappssModel1.Departamento">
+        <MappingFragment StoreEntitySet="Departamento">
+          <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
+          <ScalarProperty Name="nomdepartamento" ColumnName="nomdepartamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Distrito">
+      <EntityTypeMapping TypeName="TireappssModel1.Distrito">
+        <MappingFragment StoreEntitySet="Distrito">
+          <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+          <ScalarProperty Name="nomdistrito" ColumnName="nomdistrito" />
+          <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empresa">
+      <EntityTypeMapping TypeName="TireappssModel1.Empresa">
+        <MappingFragment StoreEntitySet="Empresa">
+          <ScalarProperty Name="Empresa_ID" ColumnName="Empresa_ID" />
+          <ScalarProperty Name="grupoempresa_id" ColumnName="grupoempresa_id" />
+          <ScalarProperty Name="tipodoc" ColumnName="tipodoc" />
+          <ScalarProperty Name="nrodoc" ColumnName="nrodoc" />
+          <ScalarProperty Name="razonsocial" ColumnName="razonsocial" />
+          <ScalarProperty Name="nombrecom" ColumnName="nombrecom" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono1" ColumnName="telefono1" />
+          <ScalarProperty Name="telefono2" ColumnName="telefono2" />
+          <ScalarProperty Name="celular1" ColumnName="celular1" />
+          <ScalarProperty Name="celular2" ColumnName="celular2" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="web" ColumnName="web" />
+          <ScalarProperty Name="moneda" ColumnName="moneda" />
+          <ScalarProperty Name="departamento" ColumnName="departamento" />
+          <ScalarProperty Name="provincia" ColumnName="provincia" />
+          <ScalarProperty Name="distrito" ColumnName="distrito" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="usureg" ColumnName="usureg" />
+          <ScalarProperty Name="fecreg" ColumnName="fecreg" />
+          <ScalarProperty Name="usumod" ColumnName="usumod" />
+          <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grupoempresa">
+      <EntityTypeMapping TypeName="TireappssModel1.Grupoempresa">
+        <MappingFragment StoreEntitySet="Grupoempresa">
+          <ScalarProperty Name="GrupoEmpresa_ID" ColumnName="GrupoEmpresa_ID" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Incidencia">
+      <EntityTypeMapping TypeName="TireappssModel1.Incidencia">
+        <MappingFragment StoreEntitySet="Incidencia">
+          <ScalarProperty Name="IncidenciasID" ColumnName="IncidenciasID" />
+          <ScalarProperty Name="CamionID" ColumnName="CamionID" />
+          <ScalarProperty Name="Neumatico_ID" ColumnName="Neumatico_ID" />
+          <ScalarProperty Name="clase" ColumnName="clase" />
+          <ScalarProperty Name="Posicion" ColumnName="Posicion" />
+          <ScalarProperty Name="Presion" ColumnName="Presion" />
+          <ScalarProperty Name="Desgaste_Promedio" ColumnName="Desgaste_Promedio" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="observacion" ColumnName="observacion" />
+          <ScalarProperty Name="usureg" ColumnName="usureg" />
+          <ScalarProperty Name="fecreg" ColumnName="fecreg" />
+          <ScalarProperty Name="usumod" ColumnName="usumod" />
+          <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lectura">
+      <EntityTypeMapping TypeName="TireappssModel1.Lectura">
+        <MappingFragment StoreEntitySet="Lectura">
+          <ScalarProperty Name="LecturaID" ColumnName="LecturaID" />
+          <ScalarProperty Name="sesion" ColumnName="sesion" />
+          <ScalarProperty Name="CamionID" ColumnName="CamionID" />
+          <ScalarProperty Name="NeumaticoID" ColumnName="NeumaticoID" />
+          <ScalarProperty Name="presion" ColumnName="presion" />
+          <ScalarProperty Name="desgaste_1" ColumnName="desgaste_1" />
+          <ScalarProperty Name="desgaste_2" ColumnName="desgaste_2" />
+          <ScalarProperty Name="desgaste_3" ColumnName="desgaste_3" />
+          <ScalarProperty Name="prom_desgaste" ColumnName="prom_desgaste" />
+          <ScalarProperty Name="varianza" ColumnName="varianza" />
+          <ScalarProperty Name="Kilometraje_Neu" ColumnName="Kilometraje_Neu" />
+          <ScalarProperty Name="observacion" ColumnName="observacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="usureg" ColumnName="usureg" />
+          <ScalarProperty Name="fecreg" ColumnName="fecreg" />
+          <ScalarProperty Name="usumod" ColumnName="usumod" />
+          <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menu">
+      <EntityTypeMapping TypeName="TireappssModel1.Menu">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="Menu_ID" ColumnName="Menu_ID" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_menu" ColumnName="id_menu" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="orden" ColumnName="orden" />
+          <ScalarProperty Name="icono" ColumnName="icono" />
+          <ScalarProperty Name="usureg" ColumnName="usureg" />
+          <ScalarProperty Name="fecreg" ColumnName="fecreg" />
+          <ScalarProperty Name="usumod" ColumnName="usumod" />
+          <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Neumatico">
+      <EntityTypeMapping TypeName="TireappssModel1.Neumatico">
+        <MappingFragment StoreEntitySet="Neumatico">
+          <ScalarProperty Name="NeumaticoID" ColumnName="NeumaticoID" />
+          <ScalarProperty Name="tipo_neumatico_id" ColumnName="tipo_neumatico_id" />
+          <ScalarProperty Name="empresa_id" ColumnName="empresa_id" />
+          <ScalarProperty Name="tag" ColumnName="tag" />
+          <ScalarProperty Name="dol" ColumnName="dol" />
+          <ScalarProperty Name="observacion" ColumnName="observacion" />
+          <ScalarProperty Name="cant_reencauche" ColumnName="cant_reencauche" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="usureg" ColumnName="usureg" />
+          <ScalarProperty Name="fecreg" ColumnName="fecreg" />
+          <ScalarProperty Name="usumod" ColumnName="usumod" />
+          <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Opcion">
+      <EntityTypeMapping TypeName="TireappssModel1.Opcion">
+        <MappingFragment StoreEntitySet="Opcion">
+          <ScalarProperty Name="Opcion_ID" ColumnName="Opcion_ID" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="usureg" ColumnName="usureg" />
+          <ScalarProperty Name="fecreg" ColumnName="fecreg" />
+          <ScalarProperty Name="usumod" ColumnName="usumod" />
+          <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Perfil">
+      <EntityTypeMapping TypeName="TireappssModel1.Perfil">
+        <MappingFragment StoreEntitySet="Perfil">
+          <ScalarProperty Name="Perfil_ID" ColumnName="Perfil_ID" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="empresa_id" ColumnName="empresa_id" />
+          <ScalarProperty Name="usureg" ColumnName="usureg" />
+          <ScalarProperty Name="fecreg" ColumnName="fecreg" />
+          <ScalarProperty Name="usumod" ColumnName="usumod" />
+          <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permiso">
+      <EntityTypeMapping TypeName="TireappssModel1.Permiso">
+        <MappingFragment StoreEntitySet="Permiso">
+          <ScalarProperty Name="permiso_ID" ColumnName="permiso_ID" />
+          <ScalarProperty Name="perfil_id" ColumnName="perfil_id" />
+          <ScalarProperty Name="menu_id" ColumnName="menu_id" />
+          <ScalarProperty Name="opcion_id" ColumnName="opcion_id" />
+          <ScalarProperty Name="permite" ColumnName="permite" />
+          <ScalarProperty Name="usureg" ColumnName="usureg" />
+          <ScalarProperty Name="fecreg" ColumnName="fecreg" />
+          <ScalarProperty Name="usumod" ColumnName="usumod" />
+          <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Provincia">
+      <EntityTypeMapping TypeName="TireappssModel1.Provincia">
+        <MappingFragment StoreEntitySet="Provincia">
+          <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+          <ScalarProperty Name="nomprovincia" ColumnName="nomprovincia" />
+          <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tabla">
+      <EntityTypeMapping TypeName="TireappssModel1.Tabla">
+        <MappingFragment StoreEntitySet="Tabla">
+          <ScalarProperty Name="Tabla_ID" ColumnName="Tabla_ID" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="tabla_padre" ColumnName="tabla_padre" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+          <ScalarProperty Name="flag1" ColumnName="flag1" />
+          <ScalarProperty Name="flag2" ColumnName="flag2" />
+          <ScalarProperty Name="flag3" ColumnName="flag3" />
+          <ScalarProperty Name="flagNum" ColumnName="flagNum" />
+          <ScalarProperty Name="flagNum2" ColumnName="flagNum2" />
+          <ScalarProperty Name="flagDec" ColumnName="flagDec" />
+          <ScalarProperty Name="flagDec2" ColumnName="flagDec2" />
+          <ScalarProperty Name="flagActivo" ColumnName="flagActivo" />
+          <ScalarProperty Name="comentario" ColumnName="comentario" />
+          <ScalarProperty Name="orden" ColumnName="orden" />
+          <ScalarProperty Name="usureg" ColumnName="usureg" />
+          <ScalarProperty Name="fecreg" ColumnName="fecreg" />
+          <ScalarProperty Name="usumod" ColumnName="usumod" />
+          <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_neumatico">
+      <EntityTypeMapping TypeName="TireappssModel1.Tipo_neumatico">
+        <MappingFragment StoreEntitySet="Tipo_neumatico">
+          <ScalarProperty Name="tipo_neumatico_ID" ColumnName="tipo_neumatico_ID" />
+          <ScalarProperty Name="empresa_id" ColumnName="empresa_id" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="modelo" ColumnName="modelo" />
+          <ScalarProperty Name="ancho" ColumnName="ancho" />
+          <ScalarProperty Name="perfil" ColumnName="perfil" />
+          <ScalarProperty Name="radial" ColumnName="radial" />
+          <ScalarProperty Name="altura_max" ColumnName="altura_max" />
+          <ScalarProperty Name="altura_min" ColumnName="altura_min" />
+          <ScalarProperty Name="indice_carga" ColumnName="indice_carga" />
+          <ScalarProperty Name="indice_velocidad" ColumnName="indice_velocidad" />
+          <ScalarProperty Name="desgaste" ColumnName="desgaste" />
+          <ScalarProperty Name="temperatura" ColumnName="temperatura" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="presion_min" ColumnName="presion_min" />
+          <ScalarProperty Name="presion_max" ColumnName="presion_max" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="usureg" ColumnName="usureg" />
+          <ScalarProperty Name="fecreg" ColumnName="fecreg" />
+          <ScalarProperty Name="usumod" ColumnName="usumod" />
+          <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipodocumento">
+      <EntityTypeMapping TypeName="TireappssModel1.Tipodocumento">
+        <MappingFragment StoreEntitySet="Tipodocumento">
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="codigosunat" ColumnName="codigosunat" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="longitud" ColumnName="longitud" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="indcontrib" ColumnName="indcontrib" />
+          <ScalarProperty Name="indlongexacta" ColumnName="indlongexacta" />
+          <ScalarProperty Name="indpersona" ColumnName="indpersona" />
+          <ScalarProperty Name="orden" ColumnName="orden" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="usureg" ColumnName="usureg" />
+          <ScalarProperty Name="fecreg" ColumnName="fecreg" />
+          <ScalarProperty Name="usumod" ColumnName="usumod" />
+          <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="TireappssModel1.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="Usuario_ID" ColumnName="Usuario_ID" />
+          <ScalarProperty Name="grupoempresa_id" ColumnName="grupoempresa_id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="empresa" ColumnName="empresa" />
+          <ScalarProperty Name="tipodoc" ColumnName="tipodoc" />
+          <ScalarProperty Name="nrodoc" ColumnName="nrodoc" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono1" ColumnName="telefono1" />
+          <ScalarProperty Name="telefono2" ColumnName="telefono2" />
+          <ScalarProperty Name="celular1" ColumnName="celular1" />
+          <ScalarProperty Name="celular2" ColumnName="celular2" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="departamento" ColumnName="departamento" />
+          <ScalarProperty Name="provincia" ColumnName="provincia" />
+          <ScalarProperty Name="distrito" ColumnName="distrito" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="usureg" ColumnName="usureg" />
+          <ScalarProperty Name="fecreg" ColumnName="fecreg" />
+          <ScalarProperty Name="usumod" ColumnName="usumod" />
+          <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario_Perfil">
+      <EntityTypeMapping TypeName="TireappssModel1.Usuario_Perfil">
+        <MappingFragment StoreEntitySet="Usuario_Perfil">
+          <ScalarProperty Name="usuarioper_ID" ColumnName="usuarioper_ID" />
+          <ScalarProperty Name="Usuario_ID" ColumnName="Usuario_ID" />
+          <ScalarProperty Name="Perfil_ID" ColumnName="Perfil_ID" />
+          <ScalarProperty Name="Empresa_ID" ColumnName="Empresa_ID" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="usureg" ColumnName="usureg" />
+          <ScalarProperty Name="fecreg" ColumnName="fecreg" />
+          <ScalarProperty Name="usumod" ColumnName="usumod" />
+          <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
