@@ -110,3 +110,4 @@ C:\Users\LISET-TEC\source\repos\WebApplication1\WebApplication1\obj\Release\WebA
 C:\Users\LISET-TEC\source\repos\WebApplication1\WebApplication1\obj\Release\WebApplication1.csproj.CopyComplete
 C:\Users\LISET-TEC\source\repos\WebApplication1\WebApplication1\obj\Release\WebApplication1.dll
 C:\Users\LISET-TEC\source\repos\WebApplication1\WebApplication1\obj\Release\WebApplication1.pdb
+C:\Users\LISET-TEC\source\repos\WebApplication1\WebApplication1\obj\Release\WebApplication1.csprojAssemblyReference.cache

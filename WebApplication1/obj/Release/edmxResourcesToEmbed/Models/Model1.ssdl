@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="TireappssModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="TireappsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Camion">
     <Key>
       <PropertyRef Name="camion_ID" />
@@ -143,20 +143,32 @@
   </EntityType>
   <EntityType Name="Neumatico">
     <Key>
-      <PropertyRef Name="NeumaticoID" />
+      <PropertyRef Name="Neumatico_id" />
     </Key>
-    <Property Name="NeumaticoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="tipo_neumatico_id" Type="int" />
+    <Property Name="Neumatico_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="empresa_id" Type="int" />
+    <Property Name="marca" Type="varchar" MaxLength="100" />
+    <Property Name="modelo" Type="varchar" MaxLength="100" />
+    <Property Name="ancho" Type="int" />
+    <Property Name="perfil" Type="varchar" MaxLength="50" />
+    <Property Name="altura_max" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="altura_min" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="indice_carga" Type="char" MaxLength="4" />
+    <Property Name="indice_velocidad" Type="char" MaxLength="4" />
+    <Property Name="desgaste" Type="int" />
+    <Property Name="temperatura" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="precio" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="presion_min" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="presion_max" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="estado" Type="char" MaxLength="4" />
+    <Property Name="usureg" Type="varchar" MaxLength="50" />
+    <Property Name="fecreg" Type="datetime" />
+    <Property Name="usumod" Type="varchar" MaxLength="50" />
     <Property Name="tag" Type="varchar" MaxLength="50" />
-    <Property Name="dol" Type="varchar" MaxLength="50" />
+    <Property Name="dot" Type="varchar" MaxLength="50" />
     <Property Name="observacion" Type="varchar" MaxLength="500" />
     <Property Name="cant_reencauche" Type="int" />
-    <Property Name="estado" Type="char" MaxLength="2" />
-    <Property Name="usureg" Type="varchar" MaxLength="20" />
-    <Property Name="fecreg" Type="datetime" />
-    <Property Name="usumod" Type="varchar" MaxLength="20" />
-    <Property Name="fecmod" Type="datetime" />
+    <Property Name="radial" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Opcion">
     <Key>
@@ -227,32 +239,6 @@
     <Property Name="usumod" Type="varchar" MaxLength="20" />
     <Property Name="fecmod" Type="datetime" />
   </EntityType>
-  <EntityType Name="Tipo_neumatico">
-    <Key>
-      <PropertyRef Name="tipo_neumatico_ID" />
-    </Key>
-    <Property Name="tipo_neumatico_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="empresa_id" Type="int" />
-    <Property Name="marca" Type="varchar" MaxLength="200" />
-    <Property Name="modelo" Type="varchar" MaxLength="200" />
-    <Property Name="ancho" Type="int" />
-    <Property Name="perfil" Type="varchar" MaxLength="20" />
-    <Property Name="radial" Type="varchar" MaxLength="20" />
-    <Property Name="altura_max" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="altura_min" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="indice_carga" Type="char" MaxLength="5" />
-    <Property Name="indice_velocidad" Type="char" MaxLength="5" />
-    <Property Name="desgaste" Type="int" />
-    <Property Name="temperatura" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="precio" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="presion_min" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="presion_max" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="estado" Type="char" MaxLength="4" />
-    <Property Name="usureg" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="fecreg" Type="datetime" />
-    <Property Name="usumod" Type="varchar" MaxLength="20" />
-    <Property Name="fecmod" Type="datetime" />
-  </EntityType>
   <EntityType Name="Tipodocumento">
     <Key>
       <PropertyRef Name="codigo" />
@@ -314,6 +300,19 @@
     <Property Name="usumod" Type="varchar" MaxLength="50" />
     <Property Name="fecmod" Type="datetime" />
   </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="usuarioID" />
+    </Key>
+    <Property Name="usuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="grupoEmpresa_ID" Type="int" />
+    <Property Name="username" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="100" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="apellido" Type="varchar" MaxLength="50" />
+    <Property Name="rol" Type="varchar" MaxLength="50" />
+    <Property Name="empresa" Type="varchar" MaxLength="50" />
+  </EntityType>
   <Association Name="FK_Camion_neumaticos_Camion">
     <End Role="Camion" Type="Self.Camion" Multiplicity="0..1" />
     <End Role="Camion_neumaticos" Type="Self.Camion_neumaticos" Multiplicity="*" />
@@ -326,12 +325,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Camion_neumaticos_Neumatico">
+  <Association Name="FK_Camion_neumaticos_Neumaticos">
     <End Role="Neumatico" Type="Self.Neumatico" Multiplicity="0..1" />
     <End Role="Camion_neumaticos" Type="Self.Camion_neumaticos" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Neumatico">
-        <PropertyRef Name="NeumaticoID" />
+        <PropertyRef Name="Neumatico_id" />
       </Principal>
       <Dependent Role="Camion_neumaticos">
         <PropertyRef Name="neumatico_id" />
@@ -376,12 +375,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Lectura_Neumatico">
+  <Association Name="FK_Lectura_Neumaticos">
     <End Role="Neumatico" Type="Self.Neumatico" Multiplicity="0..1" />
     <End Role="Lectura" Type="Self.Lectura" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Neumatico">
-        <PropertyRef Name="NeumaticoID" />
+        <PropertyRef Name="Neumatico_id" />
       </Principal>
       <Dependent Role="Lectura">
         <PropertyRef Name="NeumaticoID" />
@@ -397,18 +396,6 @@
       </Principal>
       <Dependent Role="Neumatico">
         <PropertyRef Name="empresa_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Neumatico_Tipo_neumatico">
-    <End Role="Tipo_neumatico" Type="Self.Tipo_neumatico" Multiplicity="0..1" />
-    <End Role="Neumatico" Type="Self.Neumatico" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tipo_neumatico">
-        <PropertyRef Name="tipo_neumatico_ID" />
-      </Principal>
-      <Dependent Role="Neumatico">
-        <PropertyRef Name="tipo_neumatico_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -508,7 +495,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="TireappssModelStoreContainer">
+  <EntityContainer Name="TireappsModelStoreContainer">
     <EntitySet Name="Camion" EntityType="Self.Camion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Camion_neumaticos" EntityType="Self.Camion_neumaticos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
@@ -524,15 +511,15 @@
     <EntitySet Name="Permiso" EntityType="Self.Permiso" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Provincia" EntityType="Self.Provincia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tabla" EntityType="Self.Tabla" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Tipo_neumatico" EntityType="Self.Tipo_neumatico" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tipodocumento" EntityType="Self.Tipodocumento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuario_Perfil" EntityType="Self.Usuario_Perfil" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Camion_neumaticos_Camion" Association="Self.FK_Camion_neumaticos_Camion">
       <End Role="Camion" EntitySet="Camion" />
       <End Role="Camion_neumaticos" EntitySet="Camion_neumaticos" />
     </AssociationSet>
-    <AssociationSet Name="FK_Camion_neumaticos_Neumatico" Association="Self.FK_Camion_neumaticos_Neumatico">
+    <AssociationSet Name="FK_Camion_neumaticos_Neumaticos" Association="Self.FK_Camion_neumaticos_Neumaticos">
       <End Role="Neumatico" EntitySet="Neumatico" />
       <End Role="Camion_neumaticos" EntitySet="Camion_neumaticos" />
     </AssociationSet>
@@ -548,16 +535,12 @@
       <End Role="Camion" EntitySet="Camion" />
       <End Role="Lectura" EntitySet="Lectura" />
     </AssociationSet>
-    <AssociationSet Name="FK_Lectura_Neumatico" Association="Self.FK_Lectura_Neumatico">
+    <AssociationSet Name="FK_Lectura_Neumaticos" Association="Self.FK_Lectura_Neumaticos">
       <End Role="Neumatico" EntitySet="Neumatico" />
       <End Role="Lectura" EntitySet="Lectura" />
     </AssociationSet>
     <AssociationSet Name="FK_Neumatico_Empresa" Association="Self.FK_Neumatico_Empresa">
       <End Role="Empresa" EntitySet="Empresa" />
-      <End Role="Neumatico" EntitySet="Neumatico" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Neumatico_Tipo_neumatico" Association="Self.FK_Neumatico_Tipo_neumatico">
-      <End Role="Tipo_neumatico" EntitySet="Tipo_neumatico" />
       <End Role="Neumatico" EntitySet="Neumatico" />
     </AssociationSet>
     <AssociationSet Name="FK_Permiso_Menu" Association="Self.FK_Permiso_Menu">

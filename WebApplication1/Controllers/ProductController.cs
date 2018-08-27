@@ -13,7 +13,7 @@ namespace WebApplication1.Controllers
     [RoutePrefix("api/product")]
 public class ProductController : ApiController
 {
-    private TireappssEntitiesServidor dd = new TireappssEntitiesServidor();
+    private TireappsEntities dd = new TireappsEntities();
 
         [HttpGet]
         [Route("findall")]

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TireappssModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="TireappsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Camion">
           <Key>
             <PropertyRef Name="camion_ID" />
@@ -148,20 +148,32 @@
         </EntityType>
         <EntityType Name="Neumatico">
           <Key>
-            <PropertyRef Name="NeumaticoID" />
+            <PropertyRef Name="Neumatico_id" />
           </Key>
-          <Property Name="NeumaticoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="tipo_neumatico_id" Type="int" />
+          <Property Name="Neumatico_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="empresa_id" Type="int" />
+          <Property Name="marca" Type="varchar" MaxLength="100" />
+          <Property Name="modelo" Type="varchar" MaxLength="100" />
+          <Property Name="ancho" Type="int" />
+          <Property Name="perfil" Type="varchar" MaxLength="50" />
+          <Property Name="altura_max" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="altura_min" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="indice_carga" Type="char" MaxLength="4" />
+          <Property Name="indice_velocidad" Type="char" MaxLength="4" />
+          <Property Name="desgaste" Type="int" />
+          <Property Name="temperatura" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="precio" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="presion_min" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="presion_max" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="estado" Type="char" MaxLength="4" />
+          <Property Name="usureg" Type="varchar" MaxLength="50" />
+          <Property Name="fecreg" Type="datetime" />
+          <Property Name="usumod" Type="varchar" MaxLength="50" />
           <Property Name="tag" Type="varchar" MaxLength="50" />
-          <Property Name="dol" Type="varchar" MaxLength="50" />
+          <Property Name="dot" Type="varchar" MaxLength="50" />
           <Property Name="observacion" Type="varchar" MaxLength="500" />
           <Property Name="cant_reencauche" Type="int" />
-          <Property Name="estado" Type="char" MaxLength="2" />
-          <Property Name="usureg" Type="varchar" MaxLength="20" />
-          <Property Name="fecreg" Type="datetime" />
-          <Property Name="usumod" Type="varchar" MaxLength="20" />
-          <Property Name="fecmod" Type="datetime" />
+          <Property Name="radial" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Opcion">
           <Key>
@@ -232,32 +244,6 @@
           <Property Name="usumod" Type="varchar" MaxLength="20" />
           <Property Name="fecmod" Type="datetime" />
         </EntityType>
-        <EntityType Name="Tipo_neumatico">
-          <Key>
-            <PropertyRef Name="tipo_neumatico_ID" />
-          </Key>
-          <Property Name="tipo_neumatico_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="empresa_id" Type="int" />
-          <Property Name="marca" Type="varchar" MaxLength="200" />
-          <Property Name="modelo" Type="varchar" MaxLength="200" />
-          <Property Name="ancho" Type="int" />
-          <Property Name="perfil" Type="varchar" MaxLength="20" />
-          <Property Name="radial" Type="varchar" MaxLength="20" />
-          <Property Name="altura_max" Type="decimal" Precision="8" Scale="2" />
-          <Property Name="altura_min" Type="decimal" Precision="8" Scale="2" />
-          <Property Name="indice_carga" Type="char" MaxLength="5" />
-          <Property Name="indice_velocidad" Type="char" MaxLength="5" />
-          <Property Name="desgaste" Type="int" />
-          <Property Name="temperatura" Type="decimal" Precision="8" Scale="2" />
-          <Property Name="precio" Type="decimal" Precision="8" Scale="2" />
-          <Property Name="presion_min" Type="decimal" Precision="8" Scale="2" />
-          <Property Name="presion_max" Type="decimal" Precision="8" Scale="2" />
-          <Property Name="estado" Type="char" MaxLength="4" />
-          <Property Name="usureg" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="fecreg" Type="datetime" />
-          <Property Name="usumod" Type="varchar" MaxLength="20" />
-          <Property Name="fecmod" Type="datetime" />
-        </EntityType>
         <EntityType Name="Tipodocumento">
           <Key>
             <PropertyRef Name="codigo" />
@@ -319,6 +305,19 @@
           <Property Name="usumod" Type="varchar" MaxLength="50" />
           <Property Name="fecmod" Type="datetime" />
         </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="usuarioID" />
+          </Key>
+          <Property Name="usuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grupoEmpresa_ID" Type="int" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="100" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="apellido" Type="varchar" MaxLength="50" />
+          <Property Name="rol" Type="varchar" MaxLength="50" />
+          <Property Name="empresa" Type="varchar" MaxLength="50" />
+        </EntityType>
         <Association Name="FK_Camion_neumaticos_Camion">
           <End Role="Camion" Type="Self.Camion" Multiplicity="0..1" />
           <End Role="Camion_neumaticos" Type="Self.Camion_neumaticos" Multiplicity="*" />
@@ -331,12 +330,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Camion_neumaticos_Neumatico">
+        <Association Name="FK_Camion_neumaticos_Neumaticos">
           <End Role="Neumatico" Type="Self.Neumatico" Multiplicity="0..1" />
           <End Role="Camion_neumaticos" Type="Self.Camion_neumaticos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Neumatico">
-              <PropertyRef Name="NeumaticoID" />
+              <PropertyRef Name="Neumatico_id" />
             </Principal>
             <Dependent Role="Camion_neumaticos">
               <PropertyRef Name="neumatico_id" />
@@ -381,12 +380,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Lectura_Neumatico">
+        <Association Name="FK_Lectura_Neumaticos">
           <End Role="Neumatico" Type="Self.Neumatico" Multiplicity="0..1" />
           <End Role="Lectura" Type="Self.Lectura" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Neumatico">
-              <PropertyRef Name="NeumaticoID" />
+              <PropertyRef Name="Neumatico_id" />
             </Principal>
             <Dependent Role="Lectura">
               <PropertyRef Name="NeumaticoID" />
@@ -402,18 +401,6 @@
             </Principal>
             <Dependent Role="Neumatico">
               <PropertyRef Name="empresa_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Neumatico_Tipo_neumatico">
-          <End Role="Tipo_neumatico" Type="Self.Tipo_neumatico" Multiplicity="0..1" />
-          <End Role="Neumatico" Type="Self.Neumatico" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tipo_neumatico">
-              <PropertyRef Name="tipo_neumatico_ID" />
-            </Principal>
-            <Dependent Role="Neumatico">
-              <PropertyRef Name="tipo_neumatico_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -513,7 +500,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TireappssModelStoreContainer">
+        <EntityContainer Name="TireappsModelStoreContainer">
           <EntitySet Name="Camion" EntityType="Self.Camion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Camion_neumaticos" EntityType="Self.Camion_neumaticos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
@@ -529,15 +516,15 @@
           <EntitySet Name="Permiso" EntityType="Self.Permiso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Provincia" EntityType="Self.Provincia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tabla" EntityType="Self.Tabla" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tipo_neumatico" EntityType="Self.Tipo_neumatico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipodocumento" EntityType="Self.Tipodocumento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario_Perfil" EntityType="Self.Usuario_Perfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Camion_neumaticos_Camion" Association="Self.FK_Camion_neumaticos_Camion">
             <End Role="Camion" EntitySet="Camion" />
             <End Role="Camion_neumaticos" EntitySet="Camion_neumaticos" />
           </AssociationSet>
-          <AssociationSet Name="FK_Camion_neumaticos_Neumatico" Association="Self.FK_Camion_neumaticos_Neumatico">
+          <AssociationSet Name="FK_Camion_neumaticos_Neumaticos" Association="Self.FK_Camion_neumaticos_Neumaticos">
             <End Role="Neumatico" EntitySet="Neumatico" />
             <End Role="Camion_neumaticos" EntitySet="Camion_neumaticos" />
           </AssociationSet>
@@ -553,16 +540,12 @@
             <End Role="Camion" EntitySet="Camion" />
             <End Role="Lectura" EntitySet="Lectura" />
           </AssociationSet>
-          <AssociationSet Name="FK_Lectura_Neumatico" Association="Self.FK_Lectura_Neumatico">
+          <AssociationSet Name="FK_Lectura_Neumaticos" Association="Self.FK_Lectura_Neumaticos">
             <End Role="Neumatico" EntitySet="Neumatico" />
             <End Role="Lectura" EntitySet="Lectura" />
           </AssociationSet>
           <AssociationSet Name="FK_Neumatico_Empresa" Association="Self.FK_Neumatico_Empresa">
             <End Role="Empresa" EntitySet="Empresa" />
-            <End Role="Neumatico" EntitySet="Neumatico" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Neumatico_Tipo_neumatico" Association="Self.FK_Neumatico_Tipo_neumatico">
-            <End Role="Tipo_neumatico" EntitySet="Tipo_neumatico" />
             <End Role="Neumatico" EntitySet="Neumatico" />
           </AssociationSet>
           <AssociationSet Name="FK_Permiso_Menu" Association="Self.FK_Permiso_Menu">
@@ -602,7 +585,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TireappssModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="TireappsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Camion">
           <Key>
             <PropertyRef Name="camion_ID" />
@@ -641,7 +624,7 @@
           <Property Name="usumod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="fecmod" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Camion" Relationship="Self.FK_Camion_neumaticos_Camion" FromRole="Camion_neumaticos" ToRole="Camion" />
-          <NavigationProperty Name="Neumatico" Relationship="Self.FK_Camion_neumaticos_Neumatico" FromRole="Camion_neumaticos" ToRole="Neumatico" />
+          <NavigationProperty Name="Neumatico" Relationship="Self.FK_Camion_neumaticos_Neumaticos" FromRole="Camion_neumaticos" ToRole="Neumatico" />
         </EntityType>
         <EntityType Name="Departamento">
           <Key>
@@ -739,7 +722,7 @@
           <Property Name="usumod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="fecmod" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Camion" Relationship="Self.FK_Lectura_Camion" FromRole="Lectura" ToRole="Camion" />
-          <NavigationProperty Name="Neumatico" Relationship="Self.FK_Lectura_Neumatico" FromRole="Lectura" ToRole="Neumatico" />
+          <NavigationProperty Name="Neumatico" Relationship="Self.FK_Lectura_Neumaticos" FromRole="Lectura" ToRole="Neumatico" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -759,24 +742,35 @@
         </EntityType>
         <EntityType Name="Neumatico">
           <Key>
-            <PropertyRef Name="NeumaticoID" />
+            <PropertyRef Name="Neumatico_id" />
           </Key>
-          <Property Name="NeumaticoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tipo_neumatico_id" Type="Int32" />
+          <Property Name="Neumatico_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="empresa_id" Type="Int32" />
+          <Property Name="marca" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="modelo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ancho" Type="Int32" />
+          <Property Name="perfil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="altura_max" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="altura_min" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="indice_carga" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="indice_velocidad" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="desgaste" Type="Int32" />
+          <Property Name="temperatura" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="precio" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="presion_min" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="presion_max" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="estado" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="usureg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecreg" Type="DateTime" Precision="3" />
+          <Property Name="usumod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="dol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dot" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="observacion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="cant_reencauche" Type="Int32" />
-          <Property Name="estado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="usureg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="fecreg" Type="DateTime" Precision="3" />
-          <Property Name="usumod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="fecmod" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Camion_neumaticos" Relationship="Self.FK_Camion_neumaticos_Neumatico" FromRole="Neumatico" ToRole="Camion_neumaticos" />
+          <Property Name="radial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Camion_neumaticos" Relationship="Self.FK_Camion_neumaticos_Neumaticos" FromRole="Neumatico" ToRole="Camion_neumaticos" />
           <NavigationProperty Name="Empresa" Relationship="Self.FK_Neumatico_Empresa" FromRole="Neumatico" ToRole="Empresa" />
-          <NavigationProperty Name="Lectura" Relationship="Self.FK_Lectura_Neumatico" FromRole="Neumatico" ToRole="Lectura" />
-          <NavigationProperty Name="Tipo_neumatico" Relationship="Self.FK_Neumatico_Tipo_neumatico" FromRole="Neumatico" ToRole="Tipo_neumatico" />
+          <NavigationProperty Name="Lectura" Relationship="Self.FK_Lectura_Neumaticos" FromRole="Neumatico" ToRole="Lectura" />
         </EntityType>
         <EntityType Name="Opcion">
           <Key>
@@ -855,33 +849,6 @@
           <Property Name="usumod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="fecmod" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="Tipo_neumatico">
-          <Key>
-            <PropertyRef Name="tipo_neumatico_ID" />
-          </Key>
-          <Property Name="tipo_neumatico_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="empresa_id" Type="Int32" />
-          <Property Name="marca" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="modelo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ancho" Type="Int32" />
-          <Property Name="perfil" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="radial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="altura_max" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="altura_min" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="indice_carga" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-          <Property Name="indice_velocidad" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-          <Property Name="desgaste" Type="Int32" />
-          <Property Name="temperatura" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="precio" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="presion_min" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="presion_max" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="estado" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
-          <Property Name="usureg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fecreg" Type="DateTime" Precision="3" />
-          <Property Name="usumod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="fecmod" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Neumatico" Relationship="Self.FK_Neumatico_Tipo_neumatico" FromRole="Tipo_neumatico" ToRole="Neumatico" />
-        </EntityType>
         <EntityType Name="Tipodocumento">
           <Key>
             <PropertyRef Name="codigo" />
@@ -949,6 +916,19 @@
           <NavigationProperty Name="Perfil" Relationship="Self.FK_Usuario_Perfil_Perfil" FromRole="Usuario_Perfil" ToRole="Perfil" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Perfil_Usuario" FromRole="Usuario_Perfil" ToRole="Usuario" />
         </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="usuarioID" />
+          </Key>
+          <Property Name="usuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="grupoEmpresa_ID" Type="Int32" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="empresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         <Association Name="FK_Camion_neumaticos_Camion">
           <End Role="Camion" Type="Self.Camion" Multiplicity="0..1" />
           <End Role="Camion_neumaticos" Type="Self.Camion_neumaticos" Multiplicity="*" />
@@ -973,12 +953,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Camion_neumaticos_Neumatico">
+        <Association Name="FK_Camion_neumaticos_Neumaticos">
           <End Role="Neumatico" Type="Self.Neumatico" Multiplicity="0..1" />
           <End Role="Camion_neumaticos" Type="Self.Camion_neumaticos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Neumatico">
-              <PropertyRef Name="NeumaticoID" />
+              <PropertyRef Name="Neumatico_id" />
             </Principal>
             <Dependent Role="Camion_neumaticos">
               <PropertyRef Name="neumatico_id" />
@@ -1047,12 +1027,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Lectura_Neumatico">
+        <Association Name="FK_Lectura_Neumaticos">
           <End Role="Neumatico" Type="Self.Neumatico" Multiplicity="0..1" />
           <End Role="Lectura" Type="Self.Lectura" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Neumatico">
-              <PropertyRef Name="NeumaticoID" />
+              <PropertyRef Name="Neumatico_id" />
             </Principal>
             <Dependent Role="Lectura">
               <PropertyRef Name="NeumaticoID" />
@@ -1068,18 +1048,6 @@
             </Principal>
             <Dependent Role="Permiso">
               <PropertyRef Name="menu_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Neumatico_Tipo_neumatico">
-          <End Role="Tipo_neumatico" Type="Self.Tipo_neumatico" Multiplicity="0..1" />
-          <End Role="Neumatico" Type="Self.Neumatico" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tipo_neumatico">
-              <PropertyRef Name="tipo_neumatico_ID" />
-            </Principal>
-            <Dependent Role="Neumatico">
-              <PropertyRef Name="tipo_neumatico_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1143,7 +1111,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TireappssEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TireappsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Camion" EntityType="Self.Camion" />
           <EntitySet Name="Camion_neumaticos" EntityType="Self.Camion_neumaticos" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" />
@@ -1159,10 +1127,10 @@
           <EntitySet Name="Permiso" EntityType="Self.Permiso" />
           <EntitySet Name="Provincia" EntityType="Self.Provincia" />
           <EntitySet Name="Tabla" EntityType="Self.Tabla" />
-          <EntitySet Name="Tipo_neumatico" EntityType="Self.Tipo_neumatico" />
           <EntitySet Name="Tipodocumento" EntityType="Self.Tipodocumento" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" />
           <EntitySet Name="Usuario_Perfil" EntityType="Self.Usuario_Perfil" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
           <AssociationSet Name="FK_Camion_neumaticos_Camion" Association="Self.FK_Camion_neumaticos_Camion">
             <End Role="Camion" EntitySet="Camion" />
             <End Role="Camion_neumaticos" EntitySet="Camion_neumaticos" />
@@ -1171,7 +1139,7 @@
             <End Role="Camion" EntitySet="Camion" />
             <End Role="Lectura" EntitySet="Lectura" />
           </AssociationSet>
-          <AssociationSet Name="FK_Camion_neumaticos_Neumatico" Association="Self.FK_Camion_neumaticos_Neumatico">
+          <AssociationSet Name="FK_Camion_neumaticos_Neumaticos" Association="Self.FK_Camion_neumaticos_Neumaticos">
             <End Role="Neumatico" EntitySet="Neumatico" />
             <End Role="Camion_neumaticos" EntitySet="Camion_neumaticos" />
           </AssociationSet>
@@ -1195,17 +1163,13 @@
             <End Role="Empresa" EntitySet="Empresa" />
             <End Role="Usuario_Perfil" EntitySet="Usuario_Perfil" />
           </AssociationSet>
-          <AssociationSet Name="FK_Lectura_Neumatico" Association="Self.FK_Lectura_Neumatico">
+          <AssociationSet Name="FK_Lectura_Neumaticos" Association="Self.FK_Lectura_Neumaticos">
             <End Role="Neumatico" EntitySet="Neumatico" />
             <End Role="Lectura" EntitySet="Lectura" />
           </AssociationSet>
           <AssociationSet Name="FK_Permiso_Menu" Association="Self.FK_Permiso_Menu">
             <End Role="Menu" EntitySet="Menu" />
             <End Role="Permiso" EntitySet="Permiso" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Neumatico_Tipo_neumatico" Association="Self.FK_Neumatico_Tipo_neumatico">
-            <End Role="Tipo_neumatico" EntitySet="Tipo_neumatico" />
-            <End Role="Neumatico" EntitySet="Neumatico" />
           </AssociationSet>
           <AssociationSet Name="FK_Permiso_Opcion" Association="Self.FK_Permiso_Opcion">
             <End Role="Opcion" EntitySet="Opcion" />
@@ -1233,9 +1197,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TireappssModelStoreContainer" CdmEntityContainer="TireappssEntities">
+        <EntityContainerMapping StorageEntityContainer="TireappsModelStoreContainer" CdmEntityContainer="TireappsEntities">
           <EntitySetMapping Name="Camion">
-            <EntityTypeMapping TypeName="TireappssModel.Camion">
+            <EntityTypeMapping TypeName="TireappsModel.Camion">
               <MappingFragment StoreEntitySet="Camion">
                 <ScalarProperty Name="camion_ID" ColumnName="camion_ID" />
                 <ScalarProperty Name="empresa_id" ColumnName="empresa_id" />
@@ -1257,7 +1221,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Camion_neumaticos">
-            <EntityTypeMapping TypeName="TireappssModel.Camion_neumaticos">
+            <EntityTypeMapping TypeName="TireappsModel.Camion_neumaticos">
               <MappingFragment StoreEntitySet="Camion_neumaticos">
                 <ScalarProperty Name="camion_neum_ID" ColumnName="camion_neum_ID" />
                 <ScalarProperty Name="camion_id" ColumnName="camion_id" />
@@ -1273,7 +1237,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Departamento">
-            <EntityTypeMapping TypeName="TireappssModel.Departamento">
+            <EntityTypeMapping TypeName="TireappsModel.Departamento">
               <MappingFragment StoreEntitySet="Departamento">
                 <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
                 <ScalarProperty Name="nomdepartamento" ColumnName="nomdepartamento" />
@@ -1281,7 +1245,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Distrito">
-            <EntityTypeMapping TypeName="TireappssModel.Distrito">
+            <EntityTypeMapping TypeName="TireappsModel.Distrito">
               <MappingFragment StoreEntitySet="Distrito">
                 <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
                 <ScalarProperty Name="nomdistrito" ColumnName="nomdistrito" />
@@ -1290,7 +1254,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Empresa">
-            <EntityTypeMapping TypeName="TireappssModel.Empresa">
+            <EntityTypeMapping TypeName="TireappsModel.Empresa">
               <MappingFragment StoreEntitySet="Empresa">
                 <ScalarProperty Name="Empresa_ID" ColumnName="Empresa_ID" />
                 <ScalarProperty Name="grupoempresa_id" ColumnName="grupoempresa_id" />
@@ -1318,7 +1282,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Grupoempresa">
-            <EntityTypeMapping TypeName="TireappssModel.Grupoempresa">
+            <EntityTypeMapping TypeName="TireappsModel.Grupoempresa">
               <MappingFragment StoreEntitySet="Grupoempresa">
                 <ScalarProperty Name="GrupoEmpresa_ID" ColumnName="GrupoEmpresa_ID" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1327,7 +1291,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Incidencia">
-            <EntityTypeMapping TypeName="TireappssModel.Incidencia">
+            <EntityTypeMapping TypeName="TireappsModel.Incidencia">
               <MappingFragment StoreEntitySet="Incidencia">
                 <ScalarProperty Name="IncidenciasID" ColumnName="IncidenciasID" />
                 <ScalarProperty Name="CamionID" ColumnName="CamionID" />
@@ -1346,7 +1310,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Lectura">
-            <EntityTypeMapping TypeName="TireappssModel.Lectura">
+            <EntityTypeMapping TypeName="TireappsModel.Lectura">
               <MappingFragment StoreEntitySet="Lectura">
                 <ScalarProperty Name="LecturaID" ColumnName="LecturaID" />
                 <ScalarProperty Name="sesion" ColumnName="sesion" />
@@ -1369,7 +1333,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Menu">
-            <EntityTypeMapping TypeName="TireappssModel.Menu">
+            <EntityTypeMapping TypeName="TireappsModel.Menu">
               <MappingFragment StoreEntitySet="Menu">
                 <ScalarProperty Name="Menu_ID" ColumnName="Menu_ID" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1385,25 +1349,37 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Neumatico">
-            <EntityTypeMapping TypeName="TireappssModel.Neumatico">
+            <EntityTypeMapping TypeName="TireappsModel.Neumatico">
               <MappingFragment StoreEntitySet="Neumatico">
-                <ScalarProperty Name="NeumaticoID" ColumnName="NeumaticoID" />
-                <ScalarProperty Name="tipo_neumatico_id" ColumnName="tipo_neumatico_id" />
+                <ScalarProperty Name="Neumatico_id" ColumnName="Neumatico_id" />
                 <ScalarProperty Name="empresa_id" ColumnName="empresa_id" />
-                <ScalarProperty Name="tag" ColumnName="tag" />
-                <ScalarProperty Name="dol" ColumnName="dol" />
-                <ScalarProperty Name="observacion" ColumnName="observacion" />
-                <ScalarProperty Name="cant_reencauche" ColumnName="cant_reencauche" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="modelo" ColumnName="modelo" />
+                <ScalarProperty Name="ancho" ColumnName="ancho" />
+                <ScalarProperty Name="perfil" ColumnName="perfil" />
+                <ScalarProperty Name="altura_max" ColumnName="altura_max" />
+                <ScalarProperty Name="altura_min" ColumnName="altura_min" />
+                <ScalarProperty Name="indice_carga" ColumnName="indice_carga" />
+                <ScalarProperty Name="indice_velocidad" ColumnName="indice_velocidad" />
+                <ScalarProperty Name="desgaste" ColumnName="desgaste" />
+                <ScalarProperty Name="temperatura" ColumnName="temperatura" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="presion_min" ColumnName="presion_min" />
+                <ScalarProperty Name="presion_max" ColumnName="presion_max" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="usureg" ColumnName="usureg" />
                 <ScalarProperty Name="fecreg" ColumnName="fecreg" />
                 <ScalarProperty Name="usumod" ColumnName="usumod" />
-                <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+                <ScalarProperty Name="tag" ColumnName="tag" />
+                <ScalarProperty Name="dot" ColumnName="dot" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="cant_reencauche" ColumnName="cant_reencauche" />
+                <ScalarProperty Name="radial" ColumnName="radial" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Opcion">
-            <EntityTypeMapping TypeName="TireappssModel.Opcion">
+            <EntityTypeMapping TypeName="TireappsModel.Opcion">
               <MappingFragment StoreEntitySet="Opcion">
                 <ScalarProperty Name="Opcion_ID" ColumnName="Opcion_ID" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1415,7 +1391,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Perfil">
-            <EntityTypeMapping TypeName="TireappssModel.Perfil">
+            <EntityTypeMapping TypeName="TireappsModel.Perfil">
               <MappingFragment StoreEntitySet="Perfil">
                 <ScalarProperty Name="Perfil_ID" ColumnName="Perfil_ID" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1428,7 +1404,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Permiso">
-            <EntityTypeMapping TypeName="TireappssModel.Permiso">
+            <EntityTypeMapping TypeName="TireappsModel.Permiso">
               <MappingFragment StoreEntitySet="Permiso">
                 <ScalarProperty Name="permiso_ID" ColumnName="permiso_ID" />
                 <ScalarProperty Name="perfil_id" ColumnName="perfil_id" />
@@ -1443,7 +1419,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Provincia">
-            <EntityTypeMapping TypeName="TireappssModel.Provincia">
+            <EntityTypeMapping TypeName="TireappsModel.Provincia">
               <MappingFragment StoreEntitySet="Provincia">
                 <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
                 <ScalarProperty Name="nomprovincia" ColumnName="nomprovincia" />
@@ -1452,7 +1428,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tabla">
-            <EntityTypeMapping TypeName="TireappssModel.Tabla">
+            <EntityTypeMapping TypeName="TireappsModel.Tabla">
               <MappingFragment StoreEntitySet="Tabla">
                 <ScalarProperty Name="Tabla_ID" ColumnName="Tabla_ID" />
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
@@ -1476,35 +1452,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tipo_neumatico">
-            <EntityTypeMapping TypeName="TireappssModel.Tipo_neumatico">
-              <MappingFragment StoreEntitySet="Tipo_neumatico">
-                <ScalarProperty Name="tipo_neumatico_ID" ColumnName="tipo_neumatico_ID" />
-                <ScalarProperty Name="empresa_id" ColumnName="empresa_id" />
-                <ScalarProperty Name="marca" ColumnName="marca" />
-                <ScalarProperty Name="modelo" ColumnName="modelo" />
-                <ScalarProperty Name="ancho" ColumnName="ancho" />
-                <ScalarProperty Name="perfil" ColumnName="perfil" />
-                <ScalarProperty Name="radial" ColumnName="radial" />
-                <ScalarProperty Name="altura_max" ColumnName="altura_max" />
-                <ScalarProperty Name="altura_min" ColumnName="altura_min" />
-                <ScalarProperty Name="indice_carga" ColumnName="indice_carga" />
-                <ScalarProperty Name="indice_velocidad" ColumnName="indice_velocidad" />
-                <ScalarProperty Name="desgaste" ColumnName="desgaste" />
-                <ScalarProperty Name="temperatura" ColumnName="temperatura" />
-                <ScalarProperty Name="precio" ColumnName="precio" />
-                <ScalarProperty Name="presion_min" ColumnName="presion_min" />
-                <ScalarProperty Name="presion_max" ColumnName="presion_max" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="usureg" ColumnName="usureg" />
-                <ScalarProperty Name="fecreg" ColumnName="fecreg" />
-                <ScalarProperty Name="usumod" ColumnName="usumod" />
-                <ScalarProperty Name="fecmod" ColumnName="fecmod" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Tipodocumento">
-            <EntityTypeMapping TypeName="TireappssModel.Tipodocumento">
+            <EntityTypeMapping TypeName="TireappsModel.Tipodocumento">
               <MappingFragment StoreEntitySet="Tipodocumento">
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="codigosunat" ColumnName="codigosunat" />
@@ -1524,7 +1473,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuario">
-            <EntityTypeMapping TypeName="TireappssModel.Usuario">
+            <EntityTypeMapping TypeName="TireappsModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
                 <ScalarProperty Name="Usuario_ID" ColumnName="Usuario_ID" />
                 <ScalarProperty Name="grupoempresa_id" ColumnName="grupoempresa_id" />
@@ -1553,7 +1502,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuario_Perfil">
-            <EntityTypeMapping TypeName="TireappssModel.Usuario_Perfil">
+            <EntityTypeMapping TypeName="TireappsModel.Usuario_Perfil">
               <MappingFragment StoreEntitySet="Usuario_Perfil">
                 <ScalarProperty Name="usuarioper_ID" ColumnName="usuarioper_ID" />
                 <ScalarProperty Name="Usuario_ID" ColumnName="Usuario_ID" />
@@ -1564,6 +1513,20 @@
                 <ScalarProperty Name="fecreg" ColumnName="fecreg" />
                 <ScalarProperty Name="usumod" ColumnName="usumod" />
                 <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="TireappsModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="usuarioID" ColumnName="usuarioID" />
+                <ScalarProperty Name="grupoEmpresa_ID" ColumnName="grupoEmpresa_ID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
+                <ScalarProperty Name="empresa" ColumnName="empresa" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

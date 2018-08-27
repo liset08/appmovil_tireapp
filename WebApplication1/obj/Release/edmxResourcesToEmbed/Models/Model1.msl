@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="TireappssModelStoreContainer" CdmEntityContainer="TireappssEntities">
+  <EntityContainerMapping StorageEntityContainer="TireappsModelStoreContainer" CdmEntityContainer="TireappsEntities">
     <EntitySetMapping Name="Camion">
-      <EntityTypeMapping TypeName="TireappssModel.Camion">
+      <EntityTypeMapping TypeName="TireappsModel.Camion">
         <MappingFragment StoreEntitySet="Camion">
           <ScalarProperty Name="camion_ID" ColumnName="camion_ID" />
           <ScalarProperty Name="empresa_id" ColumnName="empresa_id" />
@@ -24,7 +24,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Camion_neumaticos">
-      <EntityTypeMapping TypeName="TireappssModel.Camion_neumaticos">
+      <EntityTypeMapping TypeName="TireappsModel.Camion_neumaticos">
         <MappingFragment StoreEntitySet="Camion_neumaticos">
           <ScalarProperty Name="camion_neum_ID" ColumnName="camion_neum_ID" />
           <ScalarProperty Name="camion_id" ColumnName="camion_id" />
@@ -40,7 +40,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Departamento">
-      <EntityTypeMapping TypeName="TireappssModel.Departamento">
+      <EntityTypeMapping TypeName="TireappsModel.Departamento">
         <MappingFragment StoreEntitySet="Departamento">
           <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
           <ScalarProperty Name="nomdepartamento" ColumnName="nomdepartamento" />
@@ -48,7 +48,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Distrito">
-      <EntityTypeMapping TypeName="TireappssModel.Distrito">
+      <EntityTypeMapping TypeName="TireappsModel.Distrito">
         <MappingFragment StoreEntitySet="Distrito">
           <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
           <ScalarProperty Name="nomdistrito" ColumnName="nomdistrito" />
@@ -57,7 +57,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Empresa">
-      <EntityTypeMapping TypeName="TireappssModel.Empresa">
+      <EntityTypeMapping TypeName="TireappsModel.Empresa">
         <MappingFragment StoreEntitySet="Empresa">
           <ScalarProperty Name="Empresa_ID" ColumnName="Empresa_ID" />
           <ScalarProperty Name="grupoempresa_id" ColumnName="grupoempresa_id" />
@@ -85,7 +85,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Grupoempresa">
-      <EntityTypeMapping TypeName="TireappssModel.Grupoempresa">
+      <EntityTypeMapping TypeName="TireappsModel.Grupoempresa">
         <MappingFragment StoreEntitySet="Grupoempresa">
           <ScalarProperty Name="GrupoEmpresa_ID" ColumnName="GrupoEmpresa_ID" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -94,7 +94,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Incidencia">
-      <EntityTypeMapping TypeName="TireappssModel.Incidencia">
+      <EntityTypeMapping TypeName="TireappsModel.Incidencia">
         <MappingFragment StoreEntitySet="Incidencia">
           <ScalarProperty Name="IncidenciasID" ColumnName="IncidenciasID" />
           <ScalarProperty Name="CamionID" ColumnName="CamionID" />
@@ -113,7 +113,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Lectura">
-      <EntityTypeMapping TypeName="TireappssModel.Lectura">
+      <EntityTypeMapping TypeName="TireappsModel.Lectura">
         <MappingFragment StoreEntitySet="Lectura">
           <ScalarProperty Name="LecturaID" ColumnName="LecturaID" />
           <ScalarProperty Name="sesion" ColumnName="sesion" />
@@ -136,7 +136,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Menu">
-      <EntityTypeMapping TypeName="TireappssModel.Menu">
+      <EntityTypeMapping TypeName="TireappsModel.Menu">
         <MappingFragment StoreEntitySet="Menu">
           <ScalarProperty Name="Menu_ID" ColumnName="Menu_ID" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -152,25 +152,37 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Neumatico">
-      <EntityTypeMapping TypeName="TireappssModel.Neumatico">
+      <EntityTypeMapping TypeName="TireappsModel.Neumatico">
         <MappingFragment StoreEntitySet="Neumatico">
-          <ScalarProperty Name="NeumaticoID" ColumnName="NeumaticoID" />
-          <ScalarProperty Name="tipo_neumatico_id" ColumnName="tipo_neumatico_id" />
+          <ScalarProperty Name="Neumatico_id" ColumnName="Neumatico_id" />
           <ScalarProperty Name="empresa_id" ColumnName="empresa_id" />
-          <ScalarProperty Name="tag" ColumnName="tag" />
-          <ScalarProperty Name="dol" ColumnName="dol" />
-          <ScalarProperty Name="observacion" ColumnName="observacion" />
-          <ScalarProperty Name="cant_reencauche" ColumnName="cant_reencauche" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="modelo" ColumnName="modelo" />
+          <ScalarProperty Name="ancho" ColumnName="ancho" />
+          <ScalarProperty Name="perfil" ColumnName="perfil" />
+          <ScalarProperty Name="altura_max" ColumnName="altura_max" />
+          <ScalarProperty Name="altura_min" ColumnName="altura_min" />
+          <ScalarProperty Name="indice_carga" ColumnName="indice_carga" />
+          <ScalarProperty Name="indice_velocidad" ColumnName="indice_velocidad" />
+          <ScalarProperty Name="desgaste" ColumnName="desgaste" />
+          <ScalarProperty Name="temperatura" ColumnName="temperatura" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="presion_min" ColumnName="presion_min" />
+          <ScalarProperty Name="presion_max" ColumnName="presion_max" />
           <ScalarProperty Name="estado" ColumnName="estado" />
           <ScalarProperty Name="usureg" ColumnName="usureg" />
           <ScalarProperty Name="fecreg" ColumnName="fecreg" />
           <ScalarProperty Name="usumod" ColumnName="usumod" />
-          <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+          <ScalarProperty Name="tag" ColumnName="tag" />
+          <ScalarProperty Name="dot" ColumnName="dot" />
+          <ScalarProperty Name="observacion" ColumnName="observacion" />
+          <ScalarProperty Name="cant_reencauche" ColumnName="cant_reencauche" />
+          <ScalarProperty Name="radial" ColumnName="radial" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Opcion">
-      <EntityTypeMapping TypeName="TireappssModel.Opcion">
+      <EntityTypeMapping TypeName="TireappsModel.Opcion">
         <MappingFragment StoreEntitySet="Opcion">
           <ScalarProperty Name="Opcion_ID" ColumnName="Opcion_ID" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -182,7 +194,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Perfil">
-      <EntityTypeMapping TypeName="TireappssModel.Perfil">
+      <EntityTypeMapping TypeName="TireappsModel.Perfil">
         <MappingFragment StoreEntitySet="Perfil">
           <ScalarProperty Name="Perfil_ID" ColumnName="Perfil_ID" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -195,7 +207,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Permiso">
-      <EntityTypeMapping TypeName="TireappssModel.Permiso">
+      <EntityTypeMapping TypeName="TireappsModel.Permiso">
         <MappingFragment StoreEntitySet="Permiso">
           <ScalarProperty Name="permiso_ID" ColumnName="permiso_ID" />
           <ScalarProperty Name="perfil_id" ColumnName="perfil_id" />
@@ -210,7 +222,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Provincia">
-      <EntityTypeMapping TypeName="TireappssModel.Provincia">
+      <EntityTypeMapping TypeName="TireappsModel.Provincia">
         <MappingFragment StoreEntitySet="Provincia">
           <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
           <ScalarProperty Name="nomprovincia" ColumnName="nomprovincia" />
@@ -219,7 +231,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tabla">
-      <EntityTypeMapping TypeName="TireappssModel.Tabla">
+      <EntityTypeMapping TypeName="TireappsModel.Tabla">
         <MappingFragment StoreEntitySet="Tabla">
           <ScalarProperty Name="Tabla_ID" ColumnName="Tabla_ID" />
           <ScalarProperty Name="codigo" ColumnName="codigo" />
@@ -243,35 +255,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Tipo_neumatico">
-      <EntityTypeMapping TypeName="TireappssModel.Tipo_neumatico">
-        <MappingFragment StoreEntitySet="Tipo_neumatico">
-          <ScalarProperty Name="tipo_neumatico_ID" ColumnName="tipo_neumatico_ID" />
-          <ScalarProperty Name="empresa_id" ColumnName="empresa_id" />
-          <ScalarProperty Name="marca" ColumnName="marca" />
-          <ScalarProperty Name="modelo" ColumnName="modelo" />
-          <ScalarProperty Name="ancho" ColumnName="ancho" />
-          <ScalarProperty Name="perfil" ColumnName="perfil" />
-          <ScalarProperty Name="radial" ColumnName="radial" />
-          <ScalarProperty Name="altura_max" ColumnName="altura_max" />
-          <ScalarProperty Name="altura_min" ColumnName="altura_min" />
-          <ScalarProperty Name="indice_carga" ColumnName="indice_carga" />
-          <ScalarProperty Name="indice_velocidad" ColumnName="indice_velocidad" />
-          <ScalarProperty Name="desgaste" ColumnName="desgaste" />
-          <ScalarProperty Name="temperatura" ColumnName="temperatura" />
-          <ScalarProperty Name="precio" ColumnName="precio" />
-          <ScalarProperty Name="presion_min" ColumnName="presion_min" />
-          <ScalarProperty Name="presion_max" ColumnName="presion_max" />
-          <ScalarProperty Name="estado" ColumnName="estado" />
-          <ScalarProperty Name="usureg" ColumnName="usureg" />
-          <ScalarProperty Name="fecreg" ColumnName="fecreg" />
-          <ScalarProperty Name="usumod" ColumnName="usumod" />
-          <ScalarProperty Name="fecmod" ColumnName="fecmod" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Tipodocumento">
-      <EntityTypeMapping TypeName="TireappssModel.Tipodocumento">
+      <EntityTypeMapping TypeName="TireappsModel.Tipodocumento">
         <MappingFragment StoreEntitySet="Tipodocumento">
           <ScalarProperty Name="codigo" ColumnName="codigo" />
           <ScalarProperty Name="codigosunat" ColumnName="codigosunat" />
@@ -291,7 +276,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Usuario">
-      <EntityTypeMapping TypeName="TireappssModel.Usuario">
+      <EntityTypeMapping TypeName="TireappsModel.Usuario">
         <MappingFragment StoreEntitySet="Usuario">
           <ScalarProperty Name="Usuario_ID" ColumnName="Usuario_ID" />
           <ScalarProperty Name="grupoempresa_id" ColumnName="grupoempresa_id" />
@@ -320,7 +305,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Usuario_Perfil">
-      <EntityTypeMapping TypeName="TireappssModel.Usuario_Perfil">
+      <EntityTypeMapping TypeName="TireappsModel.Usuario_Perfil">
         <MappingFragment StoreEntitySet="Usuario_Perfil">
           <ScalarProperty Name="usuarioper_ID" ColumnName="usuarioper_ID" />
           <ScalarProperty Name="Usuario_ID" ColumnName="Usuario_ID" />
@@ -331,6 +316,20 @@
           <ScalarProperty Name="fecreg" ColumnName="fecreg" />
           <ScalarProperty Name="usumod" ColumnName="usumod" />
           <ScalarProperty Name="fecmod" ColumnName="fecmod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="TireappsModel.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="usuarioID" ColumnName="usuarioID" />
+          <ScalarProperty Name="grupoEmpresa_ID" ColumnName="grupoEmpresa_ID" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="rol" ColumnName="rol" />
+          <ScalarProperty Name="empresa" ColumnName="empresa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

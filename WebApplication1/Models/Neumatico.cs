@@ -21,24 +21,35 @@ namespace WebApplication1.Models
             this.Lectura = new HashSet<Lectura>();
         }
     
-        public int NeumaticoID { get; set; }
-        public Nullable<int> tipo_neumatico_id { get; set; }
+        public int Neumatico_id { get; set; }
         public Nullable<int> empresa_id { get; set; }
-        public string tag { get; set; }
-        public string dol { get; set; }
-        public string observacion { get; set; }
-        public Nullable<int> cant_reencauche { get; set; }
+        public string marca { get; set; }
+        public string modelo { get; set; }
+        public Nullable<int> ancho { get; set; }
+        public string perfil { get; set; }
+        public Nullable<decimal> altura_max { get; set; }
+        public Nullable<decimal> altura_min { get; set; }
+        public string indice_carga { get; set; }
+        public string indice_velocidad { get; set; }
+        public Nullable<int> desgaste { get; set; }
+        public Nullable<decimal> temperatura { get; set; }
+        public Nullable<decimal> precio { get; set; }
+        public Nullable<decimal> presion_min { get; set; }
+        public Nullable<decimal> presion_max { get; set; }
         public string estado { get; set; }
         public string usureg { get; set; }
         public Nullable<System.DateTime> fecreg { get; set; }
         public string usumod { get; set; }
-        public Nullable<System.DateTime> fecmod { get; set; }
+        public string tag { get; set; }
+        public string dot { get; set; }
+        public string observacion { get; set; }
+        public Nullable<int> cant_reencauche { get; set; }
+        public string radial { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Camion_neumaticos> Camion_neumaticos { get; set; }
         public virtual Empresa Empresa { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lectura> Lectura { get; set; }
-        public virtual Tipo_neumatico Tipo_neumatico { get; set; }
     }
 }

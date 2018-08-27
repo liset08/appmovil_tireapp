@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="TireappssModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="TireappsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Camion">
     <Key>
       <PropertyRef Name="camion_ID" />
@@ -38,7 +38,7 @@
     <Property Name="usumod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="fecmod" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Camion" Relationship="Self.FK_Camion_neumaticos_Camion" FromRole="Camion_neumaticos" ToRole="Camion" />
-    <NavigationProperty Name="Neumatico" Relationship="Self.FK_Camion_neumaticos_Neumatico" FromRole="Camion_neumaticos" ToRole="Neumatico" />
+    <NavigationProperty Name="Neumatico" Relationship="Self.FK_Camion_neumaticos_Neumaticos" FromRole="Camion_neumaticos" ToRole="Neumatico" />
   </EntityType>
   <EntityType Name="Departamento">
     <Key>
@@ -136,7 +136,7 @@
     <Property Name="usumod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="fecmod" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Camion" Relationship="Self.FK_Lectura_Camion" FromRole="Lectura" ToRole="Camion" />
-    <NavigationProperty Name="Neumatico" Relationship="Self.FK_Lectura_Neumatico" FromRole="Lectura" ToRole="Neumatico" />
+    <NavigationProperty Name="Neumatico" Relationship="Self.FK_Lectura_Neumaticos" FromRole="Lectura" ToRole="Neumatico" />
   </EntityType>
   <EntityType Name="Menu">
     <Key>
@@ -156,24 +156,35 @@
   </EntityType>
   <EntityType Name="Neumatico">
     <Key>
-      <PropertyRef Name="NeumaticoID" />
+      <PropertyRef Name="Neumatico_id" />
     </Key>
-    <Property Name="NeumaticoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="tipo_neumatico_id" Type="Int32" />
+    <Property Name="Neumatico_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="empresa_id" Type="Int32" />
+    <Property Name="marca" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="modelo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ancho" Type="Int32" />
+    <Property Name="perfil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="altura_max" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="altura_min" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="indice_carga" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="indice_velocidad" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="desgaste" Type="Int32" />
+    <Property Name="temperatura" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="precio" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="presion_min" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="presion_max" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="estado" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="usureg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecreg" Type="DateTime" Precision="3" />
+    <Property Name="usumod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="dol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dot" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="observacion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="cant_reencauche" Type="Int32" />
-    <Property Name="estado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-    <Property Name="usureg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="fecreg" Type="DateTime" Precision="3" />
-    <Property Name="usumod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="fecmod" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Camion_neumaticos" Relationship="Self.FK_Camion_neumaticos_Neumatico" FromRole="Neumatico" ToRole="Camion_neumaticos" />
+    <Property Name="radial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Camion_neumaticos" Relationship="Self.FK_Camion_neumaticos_Neumaticos" FromRole="Neumatico" ToRole="Camion_neumaticos" />
     <NavigationProperty Name="Empresa" Relationship="Self.FK_Neumatico_Empresa" FromRole="Neumatico" ToRole="Empresa" />
-    <NavigationProperty Name="Lectura" Relationship="Self.FK_Lectura_Neumatico" FromRole="Neumatico" ToRole="Lectura" />
-    <NavigationProperty Name="Tipo_neumatico" Relationship="Self.FK_Neumatico_Tipo_neumatico" FromRole="Neumatico" ToRole="Tipo_neumatico" />
+    <NavigationProperty Name="Lectura" Relationship="Self.FK_Lectura_Neumaticos" FromRole="Neumatico" ToRole="Lectura" />
   </EntityType>
   <EntityType Name="Opcion">
     <Key>
@@ -252,33 +263,6 @@
     <Property Name="usumod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="fecmod" Type="DateTime" Precision="3" />
   </EntityType>
-  <EntityType Name="Tipo_neumatico">
-    <Key>
-      <PropertyRef Name="tipo_neumatico_ID" />
-    </Key>
-    <Property Name="tipo_neumatico_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="empresa_id" Type="Int32" />
-    <Property Name="marca" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="modelo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="ancho" Type="Int32" />
-    <Property Name="perfil" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="radial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="altura_max" Type="Decimal" Precision="8" Scale="2" />
-    <Property Name="altura_min" Type="Decimal" Precision="8" Scale="2" />
-    <Property Name="indice_carga" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="indice_velocidad" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="desgaste" Type="Int32" />
-    <Property Name="temperatura" Type="Decimal" Precision="8" Scale="2" />
-    <Property Name="precio" Type="Decimal" Precision="8" Scale="2" />
-    <Property Name="presion_min" Type="Decimal" Precision="8" Scale="2" />
-    <Property Name="presion_max" Type="Decimal" Precision="8" Scale="2" />
-    <Property Name="estado" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
-    <Property Name="usureg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="fecreg" Type="DateTime" Precision="3" />
-    <Property Name="usumod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="fecmod" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Neumatico" Relationship="Self.FK_Neumatico_Tipo_neumatico" FromRole="Tipo_neumatico" ToRole="Neumatico" />
-  </EntityType>
   <EntityType Name="Tipodocumento">
     <Key>
       <PropertyRef Name="codigo" />
@@ -346,6 +330,19 @@
     <NavigationProperty Name="Perfil" Relationship="Self.FK_Usuario_Perfil_Perfil" FromRole="Usuario_Perfil" ToRole="Perfil" />
     <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Perfil_Usuario" FromRole="Usuario_Perfil" ToRole="Usuario" />
   </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="usuarioID" />
+    </Key>
+    <Property Name="usuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="grupoEmpresa_ID" Type="Int32" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="rol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="empresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
   <Association Name="FK_Camion_neumaticos_Camion">
     <End Role="Camion" Type="Self.Camion" Multiplicity="0..1" />
     <End Role="Camion_neumaticos" Type="Self.Camion_neumaticos" Multiplicity="*" />
@@ -370,12 +367,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Camion_neumaticos_Neumatico">
+  <Association Name="FK_Camion_neumaticos_Neumaticos">
     <End Role="Neumatico" Type="Self.Neumatico" Multiplicity="0..1" />
     <End Role="Camion_neumaticos" Type="Self.Camion_neumaticos" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Neumatico">
-        <PropertyRef Name="NeumaticoID" />
+        <PropertyRef Name="Neumatico_id" />
       </Principal>
       <Dependent Role="Camion_neumaticos">
         <PropertyRef Name="neumatico_id" />
@@ -444,12 +441,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Lectura_Neumatico">
+  <Association Name="FK_Lectura_Neumaticos">
     <End Role="Neumatico" Type="Self.Neumatico" Multiplicity="0..1" />
     <End Role="Lectura" Type="Self.Lectura" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Neumatico">
-        <PropertyRef Name="NeumaticoID" />
+        <PropertyRef Name="Neumatico_id" />
       </Principal>
       <Dependent Role="Lectura">
         <PropertyRef Name="NeumaticoID" />
@@ -465,18 +462,6 @@
       </Principal>
       <Dependent Role="Permiso">
         <PropertyRef Name="menu_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Neumatico_Tipo_neumatico">
-    <End Role="Tipo_neumatico" Type="Self.Tipo_neumatico" Multiplicity="0..1" />
-    <End Role="Neumatico" Type="Self.Neumatico" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tipo_neumatico">
-        <PropertyRef Name="tipo_neumatico_ID" />
-      </Principal>
-      <Dependent Role="Neumatico">
-        <PropertyRef Name="tipo_neumatico_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -540,7 +525,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="TireappssEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="TireappsEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Camion" EntityType="Self.Camion" />
     <EntitySet Name="Camion_neumaticos" EntityType="Self.Camion_neumaticos" />
     <EntitySet Name="Departamento" EntityType="Self.Departamento" />
@@ -556,10 +541,10 @@
     <EntitySet Name="Permiso" EntityType="Self.Permiso" />
     <EntitySet Name="Provincia" EntityType="Self.Provincia" />
     <EntitySet Name="Tabla" EntityType="Self.Tabla" />
-    <EntitySet Name="Tipo_neumatico" EntityType="Self.Tipo_neumatico" />
     <EntitySet Name="Tipodocumento" EntityType="Self.Tipodocumento" />
     <EntitySet Name="Usuario" EntityType="Self.Usuario" />
     <EntitySet Name="Usuario_Perfil" EntityType="Self.Usuario_Perfil" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
     <AssociationSet Name="FK_Camion_neumaticos_Camion" Association="Self.FK_Camion_neumaticos_Camion">
       <End Role="Camion" EntitySet="Camion" />
       <End Role="Camion_neumaticos" EntitySet="Camion_neumaticos" />
@@ -568,7 +553,7 @@
       <End Role="Camion" EntitySet="Camion" />
       <End Role="Lectura" EntitySet="Lectura" />
     </AssociationSet>
-    <AssociationSet Name="FK_Camion_neumaticos_Neumatico" Association="Self.FK_Camion_neumaticos_Neumatico">
+    <AssociationSet Name="FK_Camion_neumaticos_Neumaticos" Association="Self.FK_Camion_neumaticos_Neumaticos">
       <End Role="Neumatico" EntitySet="Neumatico" />
       <End Role="Camion_neumaticos" EntitySet="Camion_neumaticos" />
     </AssociationSet>
@@ -592,17 +577,13 @@
       <End Role="Empresa" EntitySet="Empresa" />
       <End Role="Usuario_Perfil" EntitySet="Usuario_Perfil" />
     </AssociationSet>
-    <AssociationSet Name="FK_Lectura_Neumatico" Association="Self.FK_Lectura_Neumatico">
+    <AssociationSet Name="FK_Lectura_Neumaticos" Association="Self.FK_Lectura_Neumaticos">
       <End Role="Neumatico" EntitySet="Neumatico" />
       <End Role="Lectura" EntitySet="Lectura" />
     </AssociationSet>
     <AssociationSet Name="FK_Permiso_Menu" Association="Self.FK_Permiso_Menu">
       <End Role="Menu" EntitySet="Menu" />
       <End Role="Permiso" EntitySet="Permiso" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Neumatico_Tipo_neumatico" Association="Self.FK_Neumatico_Tipo_neumatico">
-      <End Role="Tipo_neumatico" EntitySet="Tipo_neumatico" />
-      <End Role="Neumatico" EntitySet="Neumatico" />
     </AssociationSet>
     <AssociationSet Name="FK_Permiso_Opcion" Association="Self.FK_Permiso_Opcion">
       <End Role="Opcion" EntitySet="Opcion" />

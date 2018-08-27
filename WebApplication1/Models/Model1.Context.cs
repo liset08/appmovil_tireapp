@@ -13,10 +13,10 @@ namespace WebApplication1.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TireappssEntities : DbContext
+    public partial class TireappsEntities : DbContext
     {
-        public TireappssEntities()
-            : base("name=TireappssEntities")
+        public TireappsEntities()
+            : base("name=TireappsEntities")
         {
         }
     
@@ -40,9 +40,9 @@ namespace WebApplication1.Models
         public virtual DbSet<Permiso> Permiso { get; set; }
         public virtual DbSet<Provincia> Provincia { get; set; }
         public virtual DbSet<Tabla> Tabla { get; set; }
-        public virtual DbSet<Tipo_neumatico> Tipo_neumatico { get; set; }
         public virtual DbSet<Tipodocumento> Tipodocumento { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Usuario_Perfil> Usuario_Perfil { get; set; }
+        public virtual DbSet<Usuarios> Usuarios { get; set; }
     }
 }
